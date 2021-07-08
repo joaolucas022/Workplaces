@@ -7,7 +7,7 @@ import { LocationsListComponent } from './locations/locations-list.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LocationsListComponent
+    LocationsListComponent,
   ],
   imports: [
     BrowserModule

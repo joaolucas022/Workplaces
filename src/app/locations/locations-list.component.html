@@ -1,0 +1,16 @@
+<table class="table table-hover table-responsive m-5" *ngIf='locations.length'>
+    <thead>
+      <th>Local</th>
+      <th>Disponibilidade</th>
+      <th>Calls</th>
+      <th>Mais Info</th>
+    </thead>
+    <tbody>
+      <tr *ngFor='let location of locations'>
+        <td>{{location.name}}</td>
+        <td>{{location.disp}}</td>
+        <td>{{location.calls}}</td>
+        <td>+</td>
+      </tr>
+    </tbody>
+  </table>
