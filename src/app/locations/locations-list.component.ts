@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { ILocation } from "./location";
 
 @Component({
     selector: 'locations',
@@ -6,11 +7,11 @@ import { Component } from "@angular/core";
     styleUrls: ['./locations-list.component.css']
 })
 export class LocationsListComponent {
-    locations: any[] = [
+    locations: ILocation[] = [
         {
         name: "Caleidoscópio",
-        disp: "sim",
-        calls: "nao",
+        disp: true,
+        calls: false,
         info: [
           {
             schedule: "-",
@@ -21,8 +22,8 @@ export class LocationsListComponent {
       },
       {
         name: "Biblioteca Galveias",
-        disp: "sim",
-        calls: "nao",
+        disp: true,
+        calls: false,
         info: [
           {
             schedule: "-",
@@ -33,8 +34,8 @@ export class LocationsListComponent {
       },
       {
         name: "Biblioteca Coruchéus",
-        disp: "sim",
-        calls: "nao",
+        disp: true,
+        calls: false,
         info: [
           {
             schedule: "-",
@@ -45,8 +46,8 @@ export class LocationsListComponent {
       },
       {
         name: "Biblioteca Nacional",
-        disp: "nao",
-        calls: "nao",
+        disp: false,
+        calls: false,
         info: [
           {
             schedule: "-",
