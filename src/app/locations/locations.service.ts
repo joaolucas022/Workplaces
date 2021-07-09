@@ -1,60 +1,37 @@
-import { Injectable } from "@angular/core";
-import { ILocation } from "./location";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { ILocation } from './location';
 
 // Service
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class LocationService {
-    getLocations(): ILocation[] {
-        return [{
-            name: "Caleidoscópio",
-            disp: true,
-            calls: false,
-            info: [
-              {
-                schedule: "-",
-                address: "-",
-                site: "-",
-              },
-            ],
-          },
-          {
-            name: "Biblioteca Galveias",
-            disp: true,
-            calls: false,
-            info: [
-              {
-                schedule: "-",
-                address: "-",
-                site: "-",
-              },
-            ],
-          },
-          {
-            name: "Biblioteca Coruchéus",
-            disp: true,
-            calls: false,
-            info: [
-              {
-                schedule: "-",
-                address: "-",
-                site: "-",
-              },
-            ],
-          },
-          {
-            name: "Biblioteca Nacional",
-            disp: false,
-            calls: false,
-            info: [
-              {
-                schedule: "-",
-                address: "-",
-                site: "-",
-              },
-            ],
-          }
-        ]
+  private locationUrl = 'api/data.json';
+
+  // dependency injection
+  constructor(private http: HttpClient) {}
+
+  getLocations(): Observable<ILocation[]> {
+    return this.http.get<ILocation[]>(this.locationUrl).pipe(
+      tap((data) => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(err: HttpErrorResponse) {
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+      // a client-side or network error occurred. Handle it accordingly
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      // the backend returned an unsuccessful response code
+      // the response body may contain clues as to what went wrong
+      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
     }
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  }
 }
