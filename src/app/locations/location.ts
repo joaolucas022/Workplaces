@@ -1,6 +1,6 @@
 export interface ILocation {
-    name: string,
-    disp: boolean,
-    calls: boolean,
-    info: any[],
+  name: string;
+  disp: boolean;
+  calls: boolean;
+  info: any;
 }
