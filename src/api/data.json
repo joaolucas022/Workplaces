@@ -14,7 +14,9 @@
         "sun": ["08:00 --> 06:00"]
       },
       "address": "Campo Grande 18, 1700-162 Lisboa",
-      "site": "https://www.ulisboa.pt/info/caleidoscopio"
+      "site": "https://www.ulisboa.pt/info/caleidoscopio",
+      "contacts": 210170100,
+      "notes": []
     }
   },
   {
@@ -32,7 +34,9 @@
         "sun": ["closed"]
       },
       "address": "Campo Pequeno, 1049-046 Lisboa",
-      "site": "https://blx.cm-lisboa.pt/biblioteca-palacio-galveias/"
+      "site": "https://blx.cm-lisboa.pt/biblioteca-palacio-galveias/",
+      "contacts": 218173090,
+      "notes": ["reservar lugar antecipadamente"]
     }
   },
   {
@@ -50,7 +54,9 @@
         "sun": ["closed"]
       },
       "address": "Rua Alberto Oliveira, 1700-019 Lisboa",
-      "site": "https://blx.cm-lisboa.pt/biblioteca-dos-corucheus/"
+      "site": "https://blx.cm-lisboa.pt/biblioteca-dos-corucheus/",
+      "contacts": 218172049,
+      "notes": ["reservar lugar antecipadamente"]
     }
   },
   {
@@ -68,7 +74,9 @@
         "sun": ["closed"]
       },
       "address": "Campo Grande 83, 1749-081 Lisboa",
-      "site": "http://www.bnportugal.gov.pt"
+      "site": "http://www.bnportugal.gov.pt",
+      "contacts": 217982000,
+      "notes": []
     }
   }
 ]
