@@ -1,5 +1,5 @@
 <div class="container">
-  <table class="table table-bordered">
+  <table id="table-main" class="table table-bordered">
     <thead class="table-dark">
       <tr>
         <th scope="col">Local</th>
@@ -19,21 +19,70 @@
       </tr>
     </tbody>
   </table>
-</div>
+  <button type="button" class="btn btn-success" (click)="suggestBtnClick()">
+    Sugerir
+  </button>
 
-<div class="container" *ngIf="infoClicked">
-  <div class="card">
+  <div id="info-tab" class="card" *ngIf="infoClicked">
     <div class="card-header">
       {{ locations[clickedIndex].name }}
       <i class="fa fa-times text-danger" (click)="infoClose()"></i>
     </div>
     <div class="card-body">
-      <p><b>Hórario: </b>{{ locations[clickedIndex].info[0].schedule }}</p>
-      <p><b>Morada: </b>{{ locations[clickedIndex].info[0].address }}</p>
-      <p><b>Site: </b>{{ locations[clickedIndex].info[0].site }}</p>
+      <p><b>--Hórario--</b></p>
+      <table id="info-table" class="table table-bordered table-sm">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">segunda</th>
+            <th scope="col">terça</th>
+            <th scope="col">quarta</th>
+            <th scope="col">quinta</th>
+            <th scope="col">sexta</th>
+            <th scope="col">sábado</th>
+            <th scope="col">domingo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr scope="row">
+            <td>
+              10:30 --> 13:30
+              <hr />
+              15:00 --> 19:00
+            </td>
+            <td>
+              10:30 --> 13:30
+              <hr />
+              15:00 --> 19:00
+            </td>
+            <td>
+              10:30 --> 13:30
+              <hr />
+              15:00 --> 19:00
+            </td>
+            <td>
+              10:30 --> 13:30
+              <hr />
+              15:00 --> 19:00
+            </td>
+            <td>
+              10:30 --> 13:30
+              <hr />
+              15:00 --> 19:00
+            </td>
+            <td>encerrado</td>
+            <td>encerrado</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><b>Morada: </b>{{ locations[clickedIndex].info.address }}</p>
+      <p>
+        <b>Site: </b>
+        <a [href]="locations[clickedIndex].info.site" target="_blank">
+          {{ locations[clickedIndex].info.site }}
+        </a>
+      </p>
+      <p><b>Contactos: </b></p>
       <p><b>Notas: </b></p>
     </div>
   </div>
 </div>
-
-<!-- use index as ID -->

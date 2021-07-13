@@ -1,8 +1,8 @@
-/* .card {
-  margin: 10px 100px 0px 100px;
-} */
+.container {
+  position: relative;
+}
 
-.table {
+#table-main {
   margin-top: 30px;
 }
 
@@ -26,4 +26,21 @@
   max-width: 25px;
   text-align: center;
   /* font-size: larger; */
+}
+
+#info-tab {
+  position: absolute;
+  top: -25px;
+  width: 1000px;
+  left: 6%;
+}
+
+#info-table {
+  vertical-align: middle;
+}
+
+#info-table > thead > tr > th,
+#info-table > tbody > tr > td {
+  max-width: 75px;
+  text-align: center;
 }

@@ -47,6 +47,8 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   //   }
   // }
 
+  // opens the info tab and gathers the index of the clicked item,
+  // if the tab is already open, switches the information to the clicked item's
   infoOpen(index: number): void {
     if (this.infoClicked) {
       this.clickedIndex = index;
@@ -56,8 +58,13 @@ export class LocationsListComponent implements OnInit, OnDestroy {
     }
   }
 
+  // closes the additional information tab
   infoClose(): void {
     this.infoClicked = false;
+  }
+
+  suggestBtnClick(): void {
+    window.alert('Backend ainda não implementado :(');
   }
 }
 //<i class="fa fa-check-circle"></i>
