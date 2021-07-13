@@ -5,14 +5,14 @@
     "calls": false,
     "info": [
       {
-        "schedule": "-",
-        "address": "-",
-        "site": "-"
+        "schedule": "a",
+        "address": "b",
+        "site": "c"
       }
     ]
   },
   {
-    "name": "Biblioteca Galveias",
+    "name": "Biblioteca das Galveias",
     "disp": true,
     "calls": false,
     "info": [
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "name": "Biblioteca Coruchéus",
+    "name": "Biblioteca dos Coruchéus",
     "disp": true,
     "calls": false,
     "info": [
