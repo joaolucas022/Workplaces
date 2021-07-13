@@ -1,16 +1,39 @@
-<table class="table table-hover table-responsive m-5" *ngIf='locations.length'>
-    <thead>
-      <th>Local</th>
-      <th>Disponibilidade</th>
-      <th>Calls</th>
-      <th>Mais Info</th>
+<div class="container">
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Local</th>
+        <th scope="col" class="disp">Disponível</th>
+        <th scope="col" class="calls">Calls</th>
+        <th scope="col" class="mais-info">Mais Info</th>
+      </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let location of locations'>
-        <td>{{location.name}}</td>
-        <td>{{location.disp}}</td>
-        <td>{{location.calls}}</td>
-        <td>+</td>
+      <tr *ngFor="let location of locations; index as i" scope="row">
+        <td>{{ location.name }}</td>
+        <td class="disp">{{ location.disp ? "sim" : "não" }}</td>
+        <td class="calls">{{ location.calls ? "sim" : "não" }}</td>
+        <td class="mais-info">
+          <i class="fa fa-plus-circle text-primary" (click)="infoOpen(i)"></i>
+        </td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<div class="container" *ngIf="infoClicked">
+  <div class="card">
+    <div class="card-header">
+      {{ locations[clickedIndex].name }}
+      <i class="fa fa-times text-danger" (click)="infoClose()"></i>
+    </div>
+    <div class="card-body">
+      <p><b>Hórario: </b>{{ locations[clickedIndex].info[0].schedule }}</p>
+      <p><b>Morada: </b>{{ locations[clickedIndex].info[0].address }}</p>
+      <p><b>Site: </b>{{ locations[clickedIndex].info[0].site }}</p>
+      <p><b>Notas: </b></p>
+    </div>
+  </div>
+</div>
+
+<!-- use index as ID -->

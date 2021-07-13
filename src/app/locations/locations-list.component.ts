@@ -15,6 +15,8 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   locations: ILocation[] = [];
   errorMessage: string = '';
   sub!: Subscription;
+  infoClicked: boolean = true;
+  clickedIndex: number = 0;
 
   // dependency injection
   constructor(private locationService: LocationService) {}
@@ -32,4 +34,31 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
+
+  // dispIcon(index: number, value: boolean): void {
+  //   if (value) {
+  //     document
+  //       .getElementsByClassName('d-icon')
+  //       [index].classList.add('fa fa-check-circle');
+  //   } else {
+  //     document
+  //       .getElementsByClassName('d-icon')
+  //       [index].classList.add('fa fa-times-circle');
+  //   }
+  // }
+
+  infoOpen(index: number): void {
+    if (this.infoClicked) {
+      this.clickedIndex = index;
+    } else {
+      this.clickedIndex = index;
+      this.infoClicked = true;
+    }
+  }
+
+  infoClose(): void {
+    this.infoClicked = false;
+  }
 }
+//<i class="fa fa-check-circle"></i>
+//<i class="fa fa-times-circle"></i>
