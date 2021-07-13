@@ -1,18 +1,30 @@
 <div class="container">
-  <table id="table-main" class="table table-bordered">
+  <table id="table-main" class="table table-bordered table-hover">
     <thead class="table-dark">
       <tr>
         <th scope="col">Local</th>
-        <th scope="col" class="disp">Disponível</th>
-        <th scope="col" class="calls">Calls</th>
-        <th scope="col" class="mais-info">Mais Info</th>
+        <th scope="col" class="disp">
+          <i class="fa fa-laptop"></i>
+        </th>
+        <th scope="col" class="calls">
+          <i class="fa fa-phone"></i>
+        </th>
+        <th scope="col" class="mais-info">
+          <i class="fa fa-info-circle"></i>
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let location of locations; index as i" scope="row">
         <td>{{ location.name }}</td>
-        <td class="disp">{{ location.disp ? "sim" : "não" }}</td>
-        <td class="calls">{{ location.calls ? "sim" : "não" }}</td>
+        <td class="disp">
+          <i class="fa fa-check-circle text-success" *ngIf="location.disp"></i>
+          <i class="fa fa-times-circle text-danger" *ngIf="!location.disp"></i>
+        </td>
+        <td class="calls">
+          <i class="fa fa-check-circle text-success" *ngIf="location.calls"></i>
+          <i class="fa fa-times-circle text-danger" *ngIf="!location.calls"></i>
+        </td>
         <td class="mais-info">
           <i class="fa fa-plus-circle text-primary" (click)="infoOpen(i)"></i>
         </td>
@@ -25,12 +37,12 @@
 
   <div id="info-tab" class="card" *ngIf="infoClicked">
     <div class="card-header">
-      {{ locations[clickedIndex].name }}
+      <b>{{ locations[clickedIndex].name }}</b>
       <i class="fa fa-times text-danger" (click)="infoClose()"></i>
     </div>
     <div class="card-body">
-      <p><b>--Hórario--</b></p>
-      <table id="info-table" class="table table-bordered table-sm">
+      <p id="p-schedule"><b>-- Hórario --</b></p>
+      <table id="info-table" class="table table-bordered">
         <thead class="table-dark">
           <tr>
             <th scope="col">segunda</th>
@@ -45,44 +57,59 @@
         <tbody>
           <tr scope="row">
             <td>
-              10:30 --> 13:30
-              <hr />
-              15:00 --> 19:00
+              {{ locations[clickedIndex].info.schedule.mon[0] }}
+              <hr *ngIf="locations[clickedIndex].info.schedule.mon[1]" />
+              {{ locations[clickedIndex].info.schedule.mon[1] }}
             </td>
             <td>
-              10:30 --> 13:30
-              <hr />
-              15:00 --> 19:00
+              {{ locations[clickedIndex].info.schedule.tue[0] }}
+              <hr *ngIf="locations[clickedIndex].info.schedule.tue[1]" />
+              {{ locations[clickedIndex].info.schedule.tue[1] }}
             </td>
             <td>
-              10:30 --> 13:30
-              <hr />
-              15:00 --> 19:00
+              {{ locations[clickedIndex].info.schedule.wed[0] }}
+              <hr *ngIf="locations[clickedIndex].info.schedule.wed[1]" />
+              {{ locations[clickedIndex].info.schedule.wed[1] }}
             </td>
             <td>
-              10:30 --> 13:30
-              <hr />
-              15:00 --> 19:00
+              {{ locations[clickedIndex].info.schedule.thu[0] }}
+              <hr *ngIf="locations[clickedIndex].info.schedule.thu[1]" />
+              {{ locations[clickedIndex].info.schedule.thu[1] }}
             </td>
             <td>
-              10:30 --> 13:30
-              <hr />
-              15:00 --> 19:00
+              {{ locations[clickedIndex].info.schedule.fri[0] }}
+              <hr *ngIf="locations[clickedIndex].info.schedule.fri[1]" />
+              {{ locations[clickedIndex].info.schedule.fri[1] }}
             </td>
-            <td>encerrado</td>
-            <td>encerrado</td>
+            <td>
+              {{ locations[clickedIndex].info.schedule.sat[0] }}
+              <hr *ngIf="locations[clickedIndex].info.schedule.sat[1]" />
+              {{ locations[clickedIndex].info.schedule.sat[1] }}
+            </td>
+            <td>
+              {{ locations[clickedIndex].info.schedule.sun[0] }}
+              <hr *ngIf="locations[clickedIndex].info.schedule.sun[1]" />
+              {{ locations[clickedIndex].info.schedule.sun[1] }}
+            </td>
           </tr>
         </tbody>
       </table>
-      <p><b>Morada: </b>{{ locations[clickedIndex].info.address }}</p>
+
       <p>
         <b>Site: </b>
         <a [href]="locations[clickedIndex].info.site" target="_blank">
           {{ locations[clickedIndex].info.site }}
         </a>
       </p>
-      <p><b>Contactos: </b></p>
-      <p><b>Notas: </b></p>
+      <p>
+        <b>Contactos: </b
+        >{{ locations[clickedIndex].info.contacts | phoneNumberPipe }}
+      </p>
+      <p><b>Morada: </b>{{ locations[clickedIndex].info.address }}</p>
+      <p *ngIf="locations[clickedIndex].info.notes.length"><b>Notas </b></p>
+      <ul *ngFor="let note of locations[clickedIndex].info.notes">
+        <li>{{ note | titlecase }}</li>
+      </ul>
     </div>
   </div>
 </div>

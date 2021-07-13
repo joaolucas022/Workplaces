@@ -3,3 +3,12 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 @import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+
+body {
+  /*background-image: url("./assets/wp-bg4.jpg");
+  background-color: #cccccc;*/
+  background-image: linear-gradient(
+    rgba(216, 169, 14, 0.014),
+    rgba(255, 255, 0, 0.014)
+  );
+}

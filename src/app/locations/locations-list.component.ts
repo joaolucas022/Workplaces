@@ -15,8 +15,8 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   locations: ILocation[] = [];
   errorMessage: string = '';
   sub!: Subscription;
-  infoClicked: boolean = true;
-  clickedIndex: number = 0;
+  infoClicked: boolean = false;
+  clickedIndex!: number;
 
   // dependency injection
   constructor(private locationService: LocationService) {}
@@ -34,18 +34,6 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
-
-  // dispIcon(index: number, value: boolean): void {
-  //   if (value) {
-  //     document
-  //       .getElementsByClassName('d-icon')
-  //       [index].classList.add('fa fa-check-circle');
-  //   } else {
-  //     document
-  //       .getElementsByClassName('d-icon')
-  //       [index].classList.add('fa fa-times-circle');
-  //   }
-  // }
 
   // opens the info tab and gathers the index of the clicked item,
   // if the tab is already open, switches the information to the clicked item's
@@ -67,5 +55,3 @@ export class LocationsListComponent implements OnInit, OnDestroy {
     window.alert('Backend ainda não implementado :(');
   }
 }
-//<i class="fa fa-check-circle"></i>
-//<i class="fa fa-times-circle"></i>
