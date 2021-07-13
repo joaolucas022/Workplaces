@@ -106,7 +106,7 @@
         >{{ locations[clickedIndex].info.contacts | phoneNumberPipe }}
       </p>
       <p><b>Morada: </b>{{ locations[clickedIndex].info.address }}</p>
-      <p *ngIf="locations[clickedIndex].info.notes.length"><b>Notas </b></p>
+      <p *ngIf="locations[clickedIndex].info.notes.length"><b>Notas: </b></p>
       <ul *ngFor="let note of locations[clickedIndex].info.notes">
         <li>{{ note | titlecase }}</li>
       </ul>
