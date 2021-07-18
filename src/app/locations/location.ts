@@ -2,5 +2,9 @@ export interface ILocation {
   name: string;
   disp: boolean;
   calls: boolean;
-  info: any;
+  schedule: any;
+  address: string;
+  site: string;
+  contacts: number;
+  notes: any;
 }

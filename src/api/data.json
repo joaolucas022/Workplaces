@@ -3,80 +3,78 @@
     "name": "Caleidoscópio",
     "disp": true,
     "calls": false,
-    "info": {
-      "schedule": {
-        "mon": ["08:00 --> 06:00"],
-        "tue": ["08:00 --> 06:00"],
-        "wed": ["08:00 --> 06:00"],
-        "thu": ["08:00 --> 06:00"],
-        "fri": ["08:00 --> 06:00"],
-        "sat": ["08:00 --> 06:00"],
-        "sun": ["08:00 --> 06:00"]
-      },
-      "address": "Campo Grande 18, 1700-162 Lisboa",
-      "site": "https://www.ulisboa.pt/info/caleidoscopio",
-      "contacts": 210170100,
-      "notes": []
-    }
+    "schedule": {
+      "mon": ["08:00 --> 06:00"],
+      "tue": ["08:00 --> 06:00"],
+      "wed": ["08:00 --> 06:00"],
+      "thu": ["08:00 --> 06:00"],
+      "fri": ["08:00 --> 06:00"],
+      "sat": ["08:00 --> 06:00"],
+      "sun": ["08:00 --> 06:00"]
+    },
+    "address": "Campo Grande 18, 1700-162 Lisboa",
+    "site": "https://www.ulisboa.pt/info/caleidoscopio",
+    "contacts": 210170100,
+    "notes": ["cartão de estudante necessário para entrar"]
   },
   {
     "name": "Biblioteca das Galveias",
     "disp": true,
     "calls": false,
-    "info": {
-      "schedule": {
-        "mon": ["10:00 --> 13:30", "15:00 --> 19:00"],
-        "tue": ["10:00 --> 13:30", "15:00 --> 19:00"],
-        "wed": ["10:00 --> 13:30", "15:00 --> 19:00"],
-        "thu": ["10:00 --> 13:30", "15:00 --> 19:00"],
-        "fri": ["10:00 --> 13:30", "15:00 --> 19:00"],
-        "sat": ["closed"],
-        "sun": ["closed"]
-      },
-      "address": "Campo Pequeno, 1049-046 Lisboa",
-      "site": "https://blx.cm-lisboa.pt/biblioteca-palacio-galveias/",
-      "contacts": 218173090,
-      "notes": ["reservar lugar antecipadamente"]
-    }
+    "schedule": {
+      "mon": ["10:00 --> 13:30", "15:00 --> 19:00"],
+      "tue": ["10:00 --> 13:30", "15:00 --> 19:00"],
+      "wed": ["10:00 --> 13:30", "15:00 --> 19:00"],
+      "thu": ["10:00 --> 13:30", "15:00 --> 19:00"],
+      "fri": ["10:00 --> 13:30", "15:00 --> 19:00"],
+      "sat": ["closed"],
+      "sun": ["closed"]
+    },
+    "address": "Campo Pequeno, 1049-046 Lisboa",
+    "site": "https://blx.cm-lisboa.pt/biblioteca-palacio-galveias/",
+    "contacts": 218173090,
+    "notes": [
+      "aconselhado reservar lugar antecipadamente",
+      "horário pode mudar sem aviso prévio devido a restrições impostas pela pandemia"
+    ]
   },
   {
     "name": "Biblioteca dos Coruchéus",
     "disp": true,
     "calls": false,
-    "info": {
-      "schedule": {
-        "mon": ["10:00 --> 13:30", "14:30 --> 18:00"],
-        "tue": ["10:00 --> 13:30", "14:30 --> 18:00"],
-        "wed": ["10:00 --> 13:30", "14:30 --> 18:00"],
-        "thu": ["10:00 --> 13:30", "14:30 --> 18:00"],
-        "fri": ["10:00 --> 13:30", "14:30 --> 18:00"],
-        "sat": ["10:00 --> 13:30", "14:30 --> 18:00"],
-        "sun": ["closed"]
-      },
-      "address": "Rua Alberto Oliveira, 1700-019 Lisboa",
-      "site": "https://blx.cm-lisboa.pt/biblioteca-dos-corucheus/",
-      "contacts": 218172049,
-      "notes": ["reservar lugar antecipadamente"]
-    }
+    "schedule": {
+      "mon": ["10:00 --> 13:30", "14:30 --> 18:00"],
+      "tue": ["10:00 --> 13:30", "14:30 --> 18:00"],
+      "wed": ["10:00 --> 13:30", "14:30 --> 18:00"],
+      "thu": ["10:00 --> 13:30", "14:30 --> 18:00"],
+      "fri": ["10:00 --> 13:30", "14:30 --> 18:00"],
+      "sat": ["10:00 --> 13:30", "14:30 --> 18:00"],
+      "sun": ["closed"]
+    },
+    "address": "Rua Alberto Oliveira, 1700-019 Lisboa",
+    "site": "https://blx.cm-lisboa.pt/biblioteca-dos-corucheus/",
+    "contacts": 218172049,
+    "notes": ["aconselhadocreservar lugar antecipadamente"]
   },
   {
     "name": "Biblioteca Nacional",
     "disp": false,
     "calls": false,
-    "info": {
-      "schedule": {
-        "mon": ["09:30 --> 19:30"],
-        "tue": ["09:30 --> 19:30"],
-        "wed": ["09:30 --> 19:30"],
-        "thu": ["09:30 --> 19:30"],
-        "fri": ["09:30 --> 19:30"],
-        "sat": ["09:30 --> 17:30"],
-        "sun": ["closed"]
-      },
-      "address": "Campo Grande 83, 1749-081 Lisboa",
-      "site": "http://www.bnportugal.gov.pt",
-      "contacts": 217982000,
-      "notes": []
-    }
+    "schedule": {
+      "mon": ["09:30 --> 19:30"],
+      "tue": ["09:30 --> 19:30"],
+      "wed": ["09:30 --> 19:30"],
+      "thu": ["09:30 --> 19:30"],
+      "fri": ["09:30 --> 19:30"],
+      "sat": ["09:30 --> 17:30"],
+      "sun": ["closed"]
+    },
+    "address": "Campo Grande 83, 1749-081 Lisboa",
+    "site": "http://www.bnportugal.gov.pt",
+    "contacts": 217982000,
+    "notes": [
+      "aberto para investigadores apenas",
+      "horário de inverno diferente do horário de verão"
+    ]
   }
 ]

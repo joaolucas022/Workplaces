@@ -4,13 +4,13 @@
       <tr>
         <th scope="col">Local</th>
         <th scope="col" class="disp">
-          <i class="fa fa-laptop"></i>
+          <i class="fa fa-laptop" title="Disponível para trabalhar/estudar"></i>
         </th>
         <th scope="col" class="calls">
-          <i class="fa fa-phone"></i>
+          <i class="fa fa-phone" title="Disponível para reuniões/calls"></i>
         </th>
         <th scope="col" class="mais-info">
-          <i class="fa fa-info-circle"></i>
+          <i class="fa fa-info-circle" title="Mais Informação"></i>
         </th>
       </tr>
     </thead>
@@ -57,39 +57,39 @@
         <tbody>
           <tr scope="row">
             <td>
-              {{ locations[clickedIndex].info.schedule.mon[0] }}
-              <hr *ngIf="locations[clickedIndex].info.schedule.mon[1]" />
-              {{ locations[clickedIndex].info.schedule.mon[1] }}
+              {{ locations[clickedIndex].schedule.mon[0] }}
+              <hr *ngIf="locations[clickedIndex].schedule.mon[1]" />
+              {{ locations[clickedIndex].schedule.mon[1] }}
             </td>
             <td>
-              {{ locations[clickedIndex].info.schedule.tue[0] }}
-              <hr *ngIf="locations[clickedIndex].info.schedule.tue[1]" />
-              {{ locations[clickedIndex].info.schedule.tue[1] }}
+              {{ locations[clickedIndex].schedule.tue[0] }}
+              <hr *ngIf="locations[clickedIndex].schedule.tue[1]" />
+              {{ locations[clickedIndex].schedule.tue[1] }}
             </td>
             <td>
-              {{ locations[clickedIndex].info.schedule.wed[0] }}
-              <hr *ngIf="locations[clickedIndex].info.schedule.wed[1]" />
-              {{ locations[clickedIndex].info.schedule.wed[1] }}
+              {{ locations[clickedIndex].schedule.wed[0] }}
+              <hr *ngIf="locations[clickedIndex].schedule.wed[1]" />
+              {{ locations[clickedIndex].schedule.wed[1] }}
             </td>
             <td>
-              {{ locations[clickedIndex].info.schedule.thu[0] }}
-              <hr *ngIf="locations[clickedIndex].info.schedule.thu[1]" />
-              {{ locations[clickedIndex].info.schedule.thu[1] }}
+              {{ locations[clickedIndex].schedule.thu[0] }}
+              <hr *ngIf="locations[clickedIndex].schedule.thu[1]" />
+              {{ locations[clickedIndex].schedule.thu[1] }}
             </td>
             <td>
-              {{ locations[clickedIndex].info.schedule.fri[0] }}
-              <hr *ngIf="locations[clickedIndex].info.schedule.fri[1]" />
-              {{ locations[clickedIndex].info.schedule.fri[1] }}
+              {{ locations[clickedIndex].schedule.fri[0] }}
+              <hr *ngIf="locations[clickedIndex].schedule.fri[1]" />
+              {{ locations[clickedIndex].schedule.fri[1] }}
             </td>
             <td>
-              {{ locations[clickedIndex].info.schedule.sat[0] }}
-              <hr *ngIf="locations[clickedIndex].info.schedule.sat[1]" />
-              {{ locations[clickedIndex].info.schedule.sat[1] }}
+              {{ locations[clickedIndex].schedule.sat[0] }}
+              <hr *ngIf="locations[clickedIndex].schedule.sat[1]" />
+              {{ locations[clickedIndex].schedule.sat[1] }}
             </td>
             <td>
-              {{ locations[clickedIndex].info.schedule.sun[0] }}
-              <hr *ngIf="locations[clickedIndex].info.schedule.sun[1]" />
-              {{ locations[clickedIndex].info.schedule.sun[1] }}
+              {{ locations[clickedIndex].schedule.sun[0] }}
+              <hr *ngIf="locations[clickedIndex].schedule.sun[1]" />
+              {{ locations[clickedIndex].schedule.sun[1] }}
             </td>
           </tr>
         </tbody>
@@ -97,17 +97,17 @@
 
       <p>
         <b>Site: </b>
-        <a [href]="locations[clickedIndex].info.site" target="_blank">
-          {{ locations[clickedIndex].info.site }}
+        <a [href]="locations[clickedIndex].site" target="_blank">
+          {{ locations[clickedIndex].site }}
         </a>
       </p>
       <p>
         <b>Contactos: </b
-        >{{ locations[clickedIndex].info.contacts | phoneNumberPipe }}
+        >{{ locations[clickedIndex].contacts | phoneNumberPipe }}
       </p>
-      <p><b>Morada: </b>{{ locations[clickedIndex].info.address }}</p>
-      <p *ngIf="locations[clickedIndex].info.notes.length"><b>Notas: </b></p>
-      <ul *ngFor="let note of locations[clickedIndex].info.notes">
+      <p><b>Morada: </b>{{ locations[clickedIndex].address }}</p>
+      <p *ngIf="locations[clickedIndex].notes.length"><b>Notas: </b></p>
+      <ul *ngFor="let note of locations[clickedIndex].notes">
         <li>{{ note | titlecase }}</li>
       </ul>
     </div>
