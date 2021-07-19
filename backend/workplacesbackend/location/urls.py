@@ -1,4 +1,4 @@
-from django.urls import url, include
+from django.urls import path, include
 from location import views
 from rest_framework.routers import DefaultRouter
 
@@ -8,7 +8,7 @@ router = DefaultRouter(trailing_slash=False)
 router.register(r'locations', views.LocationViewSet)
 
 
-# The API URLs are now determined automatically by the router
+
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    path('', include(router.urls))
 ]
