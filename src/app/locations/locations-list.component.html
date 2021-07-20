@@ -42,7 +42,14 @@
     </div>
     <div class="card-body">
       <p id="p-schedule"><b>-- Hórario --</b></p>
-      <table id="info-table" class="table table-bordered">
+      <p *ngIf="!locations[clickedIndex].schedule.length">
+        Horário indisponível
+      </p>
+      <table
+        id="info-table"
+        class="table table-bordered"
+        *ngIf="locations[clickedIndex].schedule.length"
+      >
         <thead class="table-dark">
           <tr>
             <th scope="col">segunda</th>
