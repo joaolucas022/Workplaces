@@ -362,14 +362,18 @@
         </div>
       </div>
 
-      <div class="row mb-5">
+      <div class="row mb-5" id="notes-suggest">
+        <p>Notas <small>(opcional)</small></p>
         <div class="col-3">
-          <label for="note-input" class="form-label">
-            Notas <small>(opcional)</small>
+          <label for="note1-input" class="form-label" *ngIf="noteCount > 1">
+            <small>Nota 1</small>
           </label>
-          <textarea class="form-control" id="note-input" rows="3"></textarea>
+          <textarea class="form-control" id="note1-input" rows="3"></textarea>
         </div>
-        <button id="plus-button">+</button>
+        <button id="plus-button" (click)="addNote()">+</button>
+        <button id="minus-button" (click)="removeNote()" *ngIf="noteCount > 1">
+          -
+        </button>
       </div>
 
       <button type="button" class="btn btn-success">Submeter</button>

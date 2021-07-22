@@ -76,16 +76,25 @@
   left: 6%;
 }
 
-#plus-button {
+#plus-button,
+#minus-button {
   height: 23px;
   width: 22px;
-  background-color: #1e945e;
   color: #ffffff;
   border: none;
   border-radius: 50%;
   font-weight: bolder;
   line-height: 100%;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
-  margin-top: 111px;
+}
+
+#plus-button {
+  background-color: #1e945e;
+  margin: 80px 0 0 0;
+}
+
+#minus-button {
+  background-color: #b32b2b;
+  margin: 84px 0 0 -24px;
 }
