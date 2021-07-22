@@ -31,7 +31,7 @@
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-success" (click)="suggestBtnClick()">
+  <button type="button" class="btn btn-success" (click)="suggestOpen()">
     Sugerir
   </button>
 
@@ -150,23 +150,13 @@
       </div>
 
       <div class="form-check mb-3">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="disp-input"
-        />
+        <input class="form-check-input" type="checkbox" id="disp-input" />
         <label class="form-check-label" for="disp-input">
           Disponível para trabalhar/estudar
         </label>
       </div>
       <div class="form-check mb-5">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="calls-input"
-        />
+        <input class="form-check-input" type="checkbox" id="calls-input" />
         <label class="form-check-label" for="calls-input">
           Disponível para reuniões/chamadas
         </label>
@@ -189,6 +179,16 @@
               <span class="input-group-text">--&gt;</span>
               <input type="text" class="form-control" placeholder="Encerra" />
             </div>
+            <div class="input-group mt-1" *ngIf="lunchChecked">
+              <input
+                type="text"
+                id="sc-mon-input2"
+                class="form-control"
+                placeholder="Reabre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
           </div>
 
           <div class="col-3">
@@ -201,6 +201,16 @@
                 id="sc-tue-input"
                 class="form-control"
                 placeholder="Abre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
+            <div class="input-group mt-1" *ngIf="lunchChecked">
+              <input
+                type="text"
+                id="sc-tue-input2"
+                class="form-control"
+                placeholder="Reabre"
               />
               <span class="input-group-text">--&gt;</span>
               <input type="text" class="form-control" placeholder="Encerra" />
@@ -221,6 +231,16 @@
               <span class="input-group-text">--&gt;</span>
               <input type="text" class="form-control" placeholder="Encerra" />
             </div>
+            <div class="input-group mt-1" *ngIf="lunchChecked">
+              <input
+                type="text"
+                id="sc-wed-input2"
+                class="form-control"
+                placeholder="Reabre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
           </div>
 
           <div class="col-3">
@@ -233,6 +253,16 @@
                 id="sc-thu-input"
                 class="form-control"
                 placeholder="Abre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
+            <div class="input-group mt-1" *ngIf="lunchChecked">
+              <input
+                type="text"
+                id="sc-thu-input2"
+                class="form-control"
+                placeholder="Reabre"
               />
               <span class="input-group-text">--&gt;</span>
               <input type="text" class="form-control" placeholder="Encerra" />
@@ -253,6 +283,16 @@
               <span class="input-group-text">--&gt;</span>
               <input type="text" class="form-control" placeholder="Encerra" />
             </div>
+            <div class="input-group mt-1" *ngIf="lunchChecked">
+              <input
+                type="text"
+                id="sc-fri-input2"
+                class="form-control"
+                placeholder="Reabre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
           </div>
 
           <div class="col-3">
@@ -265,6 +305,16 @@
                 id="sc-sat-input"
                 class="form-control"
                 placeholder="Abre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
+            <div class="input-group mt-1" *ngIf="lunchChecked">
+              <input
+                type="text"
+                id="sc-sat-input2"
+                class="form-control"
+                placeholder="Reabre"
               />
               <span class="input-group-text">--&gt;</span>
               <input type="text" class="form-control" placeholder="Encerra" />
@@ -285,6 +335,16 @@
               <span class="input-group-text">--&gt;</span>
               <input type="text" class="form-control" placeholder="Encerra" />
             </div>
+            <div class="input-group mt-1" *ngIf="lunchChecked">
+              <input
+                type="text"
+                id="sc-sun-input2"
+                class="form-control"
+                placeholder="Reabre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
           </div>
         </div>
 
@@ -292,8 +352,9 @@
           <input
             class="form-check-input"
             type="checkbox"
-            value=""
+            value="lunch"
             id="sc-lunch-checker"
+            (change)="onLunchCheck()"
           />
           <label class="form-check-label" for="sc-lunch-checker">
             Fecha para almoço
@@ -301,7 +362,7 @@
         </div>
       </div>
 
-      <div class="row mb-4">
+      <div class="row mb-5">
         <div class="col-3">
           <label for="note-input" class="form-label">
             Notas <small>(opcional)</small>

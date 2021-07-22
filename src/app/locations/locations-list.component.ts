@@ -18,6 +18,7 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   infoClicked: boolean = false;
   clickedIndex!: number;
   suggestClicked: boolean = true;
+  lunchChecked: boolean = false;
 
   // dependency injection
   constructor(private locationService: LocationService) {}
@@ -52,11 +53,17 @@ export class LocationsListComponent implements OnInit, OnDestroy {
     this.infoClicked = false;
   }
 
-  suggestBtnClick(): void {
+  // opens the suggestion tab
+  suggestOpen(): void {
     this.suggestClicked = true;
   }
 
+  // closes the suggestion tab
   suggestClose(): void {
     this.suggestClicked = false;
+  }
+
+  onLunchCheck(): void {
+    this.lunchChecked = !this.lunchChecked;
   }
 }
