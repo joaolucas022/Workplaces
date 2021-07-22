@@ -7,7 +7,7 @@
           <i class="fa fa-laptop" title="Disponível para trabalhar/estudar"></i>
         </th>
         <th scope="col" class="calls">
-          <i class="fa fa-phone" title="Disponível para reuniões/calls"></i>
+          <i class="fa fa-phone" title="Disponível para reuniões/chamadas"></i>
         </th>
         <th scope="col" class="mais-info">
           <i class="fa fa-info-circle" title="Mais Informação"></i>
@@ -115,6 +115,203 @@
       <ul *ngFor="let note of locations[clickedIndex].notes">
         <li>{{ note | titlecase }}</li>
       </ul>
+    </div>
+  </div>
+
+  <div id="submit-tab" class="card" *ngIf="suggestClicked">
+    <div class="card-header">
+      <b>Adicionar Novo Local</b>
+      <i class="fa fa-times text-danger" (click)="suggestClose()"></i>
+    </div>
+    <div class="card-body">
+      <div class="mb-3">
+        <label for="name-input" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="name-input" />
+      </div>
+
+      <div class="mb-3">
+        <label for="address-input" class="form-label">Morada</label>
+        <input type="text" class="form-control" id="address-input" />
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-4">
+          <label for="contacts-input" class="form-label">
+            Contacto <small>(opcional)</small>
+          </label>
+          <input type="text" class="form-control" id="contacts-input" />
+        </div>
+        <div class="col-8">
+          <label for="site-input" class="form-label">
+            Site <small>(opcional)</small>
+          </label>
+          <input type="text" class="form-control" id="site-input" />
+        </div>
+      </div>
+
+      <div class="form-check mb-3">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="disp-input"
+        />
+        <label class="form-check-label" for="disp-input">
+          Disponível para trabalhar/estudar
+        </label>
+      </div>
+      <div class="form-check mb-5">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="calls-input"
+        />
+        <label class="form-check-label" for="calls-input">
+          Disponível para reuniões/chamadas
+        </label>
+      </div>
+
+      <div class="schedule-suggest mb-5">
+        <p>Horário <small>(opcional)</small></p>
+        <div class="row mb-3">
+          <div class="col-3 mb-2">
+            <label for="sc-mon-input" class="form-label">
+              <small>Segunda</small>
+            </label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="sc-mon-input"
+                class="form-control"
+                placeholder="Abre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <label for="sc-tue-input" class="form-label">
+              <small>Terça</small>
+            </label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="sc-tue-input"
+                class="form-control"
+                placeholder="Abre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <label for="sc-wed-input" class="form-label">
+              <small>Quarta</small>
+            </label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="sc-wed-input"
+                class="form-control"
+                placeholder="Abre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <label for="sc-thu-input" class="form-label">
+              <small>Quinta</small>
+            </label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="sc-thu-input"
+                class="form-control"
+                placeholder="Abre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <label for="sc-fri-input" class="form-label">
+              <small>Sexta</small>
+            </label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="sc-fri-input"
+                class="form-control"
+                placeholder="Abre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <label for="sc-sat-input" class="form-label">
+              <small>Sábado</small>
+            </label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="sc-sat-input"
+                class="form-control"
+                placeholder="Abre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
+          </div>
+
+          <div class="col-3">
+            <label for="sc-sun-input" class="form-label">
+              <small>Domingo</small>
+            </label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="sc-sun-input"
+                class="form-control"
+                placeholder="Abre"
+              />
+              <span class="input-group-text">--&gt;</span>
+              <input type="text" class="form-control" placeholder="Encerra" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-check mb-4">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="sc-lunch-checker"
+          />
+          <label class="form-check-label" for="sc-lunch-checker">
+            Fecha para almoço
+          </label>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-3">
+          <label for="note-input" class="form-label">
+            Notas <small>(opcional)</small>
+          </label>
+          <textarea class="form-control" id="note-input" rows="3"></textarea>
+        </div>
+        <button id="plus-button">+</button>
+      </div>
+
+      <button type="button" class="btn btn-success">Submeter</button>
     </div>
   </div>
 </div>

@@ -17,6 +17,7 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   sub!: Subscription;
   infoClicked: boolean = false;
   clickedIndex!: number;
+  suggestClicked: boolean = true;
 
   // dependency injection
   constructor(private locationService: LocationService) {}
@@ -52,6 +53,10 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   }
 
   suggestBtnClick(): void {
-    window.alert('Backend ainda não implementado :(');
+    this.suggestClicked = true;
+  }
+
+  suggestClose(): void {
+    this.suggestClicked = false;
   }
 }

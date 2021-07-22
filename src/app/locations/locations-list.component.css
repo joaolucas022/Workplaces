@@ -57,7 +57,7 @@
 
 #info-table > thead > tr > th,
 #info-table > tbody > tr > td {
-  max-width: 75px;
+  /* min-width: 75px; */
   text-align: center;
 }
 
@@ -67,4 +67,25 @@
 
 #p-schedule {
   text-align: center;
+}
+
+#submit-tab {
+  position: absolute;
+  top: -95px;
+  width: 1000px;
+  left: 6%;
+}
+
+#plus-button {
+  height: 23px;
+  width: 22px;
+  background-color: #1e945e;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  font-weight: bolder;
+  line-height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 111px;
 }
