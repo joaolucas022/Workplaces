@@ -61,6 +61,15 @@ export class LocationsListComponent implements OnInit, OnDestroy {
 
   // closes the suggestion tab
   suggestClose(): void {
+    const plus = <HTMLInputElement>document.getElementById('plus-button');
+    const minus = <HTMLInputElement>document.getElementById('minus-button');
+
+    if (minus) {
+      plus.style.margin = '80px 0 0 0';
+      minus.style.margin = '84px 0 0 -24px';
+      this.noteCount = 1;
+    }
+    this.lunchChecked = false;
     this.suggestClicked = false;
   }
 
@@ -81,6 +90,7 @@ export class LocationsListComponent implements OnInit, OnDestroy {
     newDiv.classList.add('col-3');
     newDiv.setAttribute('id', `note${this.noteCount}-div`);
     newTextarea.classList.add('form-control');
+    newTextarea.classList.add('note-input');
     newTextarea.setAttribute('id', `note${this.noteCount}-input`);
     newTextarea.setAttribute('rows', '3');
     newLabel.classList.add('form-label');
@@ -128,21 +138,124 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   }
 
   submit(): void {
-    const newName = <HTMLInputElement>document.getElementById('name-input');
-    const newAddress = <HTMLInputElement>(
+    const plus = <HTMLInputElement>document.getElementById('plus-button');
+    const minus = <HTMLInputElement>document.getElementById('minus-button');
+
+    const nameInput = <HTMLInputElement>document.getElementById('name-input');
+    const dispInput = <HTMLInputElement>document.getElementById('disp-input');
+    const callsInput = <HTMLInputElement>document.getElementById('calls-input');
+    const siteInput = <HTMLInputElement>document.getElementById('site-input');
+    const addressInput = <HTMLInputElement>(
       document.getElementById('address-input')
     );
-    const newContacts = <HTMLInputElement>(
+    const contactsInput = <HTMLInputElement>(
       document.getElementById('contacts-input')
     );
-    const newSite = <HTMLInputElement>document.getElementById('site-input');
-    const newDisp = <HTMLInputElement>document.getElementById('disp-input');
-    const newCalls = <HTMLInputElement>document.getElementById('calls-input');
 
-    const newSchedule = <HTMLCollectionOf<HTMLInputElement>>(
-      document.getElementsByClassName('sc-input')
+    const newName = nameInput.value;
+    const newAddress = addressInput.value;
+    const newSite = siteInput.value;
+    const newContacts = Number(contactsInput.value);
+    const newDisp = dispInput.checked;
+    const newCalls = callsInput.checked;
+
+    const notesInputs = <HTMLCollectionOf<HTMLInputElement>>(
+      document.getElementsByClassName('note-input')
     );
 
-    console.log(newSchedule);
+    let newNotes = [];
+    for (let i = 0; i < notesInputs.length; i++) {
+      newNotes.push(notesInputs[i].value);
+    }
+
+    const scOpen1 = <HTMLCollectionOf<HTMLInputElement>>(
+      document.getElementsByClassName('sc-input-open')
+    );
+    const scClose1 = <HTMLCollectionOf<HTMLInputElement>>(
+      document.getElementsByClassName('sc-input-close')
+    );
+    let newSchedule;
+
+    if (
+      scOpen1[0].value !== '' &&
+      scClose1[0].value !== '' &&
+      this.lunchChecked == false
+    ) {
+      newSchedule = {
+        mon: [scOpen1[0].value + ' --> ' + scClose1[0].value],
+        tue: [scOpen1[1].value + ' --> ' + scClose1[1].value],
+        wed: [scOpen1[2].value + ' --> ' + scClose1[2].value],
+        thu: [scOpen1[3].value + ' --> ' + scClose1[3].value],
+        fri: [scOpen1[4].value + ' --> ' + scClose1[4].value],
+        sat: [scOpen1[5].value + ' --> ' + scClose1[5].value],
+        sun: [scOpen1[6].value + ' --> ' + scClose1[6].value],
+      };
+    } else if (
+      scOpen1[0].value !== '' &&
+      scClose1[0].value !== '' &&
+      this.lunchChecked == true
+    ) {
+      const scOpen2 = <HTMLCollectionOf<HTMLInputElement>>(
+        document.getElementsByClassName('sc-input-open2')
+      );
+      const scClose2 = <HTMLCollectionOf<HTMLInputElement>>(
+        document.getElementsByClassName('sc-input-close2')
+      );
+      newSchedule = {
+        mon: [
+          scOpen1[0].value + ' --> ' + scClose1[0].value,
+          scOpen2[0].value + ' --> ' + scClose2[0].value,
+        ],
+        tue: [
+          scOpen1[1].value + ' --> ' + scClose1[1].value,
+          scOpen2[1].value + ' --> ' + scClose2[1].value,
+        ],
+        wed: [
+          scOpen1[2].value + ' --> ' + scClose1[2].value,
+          scOpen2[2].value + ' --> ' + scClose2[2].value,
+        ],
+        thu: [
+          scOpen1[3].value + ' --> ' + scClose1[3].value,
+          scOpen2[3].value + ' --> ' + scClose2[3].value,
+        ],
+        fri: [
+          scOpen1[4].value + ' --> ' + scClose1[4].value,
+          scOpen2[4].value + ' --> ' + scClose2[4].value,
+        ],
+        sat: [
+          scOpen1[5].value + ' --> ' + scClose1[5].value,
+          scOpen2[5].value + ' --> ' + scClose2[5].value,
+        ],
+        sun: [
+          scOpen1[6].value + ' --> ' + scClose1[6].value,
+          scOpen2[6].value + ' --> ' + scClose2[6].value,
+        ],
+      };
+    } else {
+      newSchedule = null;
+    }
+
+    const newLocation: ILocation = {
+      name: newName,
+      disp: newDisp,
+      calls: newCalls,
+      schedule: newSchedule,
+      address: newAddress,
+      site: newSite,
+      contacts: newContacts,
+      notes: newNotes,
+    };
+
+    this.locationService
+      .addLocation(newLocation)
+      .subscribe((location) => this.locations.push(location));
+
+    if (minus) {
+      plus.style.margin = '80px 0 0 0';
+      minus.style.margin = '84px 0 0 -24px';
+      this.noteCount = 1;
+    }
+    this.lunchChecked = false;
+    this.suggestClicked = false;
   }
 }

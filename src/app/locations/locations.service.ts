@@ -22,6 +22,12 @@ export class LocationService {
     );
   }
 
+  addLocation(location: ILocation): Observable<ILocation> {
+    return this.http
+      .post<ILocation>(this.locationUrl, location)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {

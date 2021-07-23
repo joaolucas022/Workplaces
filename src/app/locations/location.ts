@@ -6,5 +6,5 @@ export interface ILocation {
   address: string;
   site: string;
   contacts: number;
-  notes: any;
+  notes: string[];
 }
