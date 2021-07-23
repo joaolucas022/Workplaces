@@ -9,7 +9,8 @@ import { ILocation } from './location';
   providedIn: 'root',
 })
 export class LocationService {
-  private locationUrl = 'api/data.json';
+  // hardcode: api/data.json
+  private locationUrl = 'http://127.0.0.1:8000/api/locations';
 
   // dependency injection
   constructor(private http: HttpClient) {}

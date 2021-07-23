@@ -17,7 +17,7 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   sub!: Subscription;
   infoClicked: boolean = false;
   clickedIndex!: number;
-  suggestClicked: boolean = true;
+  suggestClicked: boolean = false;
   lunchChecked: boolean = false;
   noteCount: number = 1;
 
@@ -80,14 +80,6 @@ export class LocationsListComponent implements OnInit, OnDestroy {
     this.noteCount++;
     newDiv.classList.add('col-3');
     newDiv.setAttribute('id', `note${this.noteCount}-div`);
-
-    // newDiv.innerHTML = `
-    // <label for="note-input${this.noteCount}" class="form-label">
-    //   <small>Nota ${this.noteCount}</small>
-    // </label>
-    // <textarea class="form-control" id="note-input${this.noteCount}" rows="3"></textarea>
-    // `;
-
     newTextarea.classList.add('form-control');
     newTextarea.setAttribute('id', `note${this.noteCount}-input`);
     newTextarea.setAttribute('rows', '3');
@@ -113,11 +105,12 @@ export class LocationsListComponent implements OnInit, OnDestroy {
     }
   }
 
+  // removes the last note
   removeNote(): void {
-    const plus = document.getElementById('plus-button');
+    const plus = <HTMLInputElement>document.getElementById('plus-button');
     const minus = document.getElementById('minus-button');
     const lastDiv = document.getElementById(`note${this.noteCount}-div`);
-    if (lastDiv && plus) {
+    if (lastDiv) {
       lastDiv.remove();
       this.noteCount--;
 
@@ -132,5 +125,24 @@ export class LocationsListComponent implements OnInit, OnDestroy {
         minus.style.margin = '84px 0 0 -24px';
       }
     }
+  }
+
+  submit(): void {
+    const newName = <HTMLInputElement>document.getElementById('name-input');
+    const newAddress = <HTMLInputElement>(
+      document.getElementById('address-input')
+    );
+    const newContacts = <HTMLInputElement>(
+      document.getElementById('contacts-input')
+    );
+    const newSite = <HTMLInputElement>document.getElementById('site-input');
+    const newDisp = <HTMLInputElement>document.getElementById('disp-input');
+    const newCalls = <HTMLInputElement>document.getElementById('calls-input');
+
+    const newSchedule = <HTMLCollectionOf<HTMLInputElement>>(
+      document.getElementsByClassName('sc-input')
+    );
+
+    console.log(newSchedule);
   }
 }

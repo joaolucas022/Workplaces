@@ -134,7 +134,7 @@
         <input type="text" class="form-control" id="address-input" />
       </div>
 
-      <div class="row mb-4">
+      <div class="row mb-5">
         <div class="col-4">
           <label for="contacts-input" class="form-label">
             Contacto <small>(opcional)</small>
@@ -173,7 +173,7 @@
               <input
                 type="text"
                 id="sc-mon-input"
-                class="form-control"
+                class="form-control sc-input"
                 placeholder="Abre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -183,7 +183,7 @@
               <input
                 type="text"
                 id="sc-mon-input2"
-                class="form-control"
+                class="form-control sc-input2"
                 placeholder="Reabre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -199,7 +199,7 @@
               <input
                 type="text"
                 id="sc-tue-input"
-                class="form-control"
+                class="form-control sc-input"
                 placeholder="Abre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -209,7 +209,7 @@
               <input
                 type="text"
                 id="sc-tue-input2"
-                class="form-control"
+                class="form-control sc-input2"
                 placeholder="Reabre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -225,7 +225,7 @@
               <input
                 type="text"
                 id="sc-wed-input"
-                class="form-control"
+                class="form-control sc-input"
                 placeholder="Abre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -235,7 +235,7 @@
               <input
                 type="text"
                 id="sc-wed-input2"
-                class="form-control"
+                class="form-control sc-input2"
                 placeholder="Reabre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -251,7 +251,7 @@
               <input
                 type="text"
                 id="sc-thu-input"
-                class="form-control"
+                class="form-control sc-input"
                 placeholder="Abre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -261,7 +261,7 @@
               <input
                 type="text"
                 id="sc-thu-input2"
-                class="form-control"
+                class="form-control sc-input2"
                 placeholder="Reabre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -277,7 +277,7 @@
               <input
                 type="text"
                 id="sc-fri-input"
-                class="form-control"
+                class="form-control sc-input"
                 placeholder="Abre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -287,7 +287,7 @@
               <input
                 type="text"
                 id="sc-fri-input2"
-                class="form-control"
+                class="form-control sc-input2"
                 placeholder="Reabre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -303,7 +303,7 @@
               <input
                 type="text"
                 id="sc-sat-input"
-                class="form-control"
+                class="form-control sc-input"
                 placeholder="Abre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -313,7 +313,7 @@
               <input
                 type="text"
                 id="sc-sat-input2"
-                class="form-control"
+                class="form-control sc-input2"
                 placeholder="Reabre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -329,7 +329,7 @@
               <input
                 type="text"
                 id="sc-sun-input"
-                class="form-control"
+                class="form-control sc-input"
                 placeholder="Abre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -339,7 +339,7 @@
               <input
                 type="text"
                 id="sc-sun-input2"
-                class="form-control"
+                class="form-control sc-input2"
                 placeholder="Reabre"
               />
               <span class="input-group-text">--&gt;</span>
@@ -376,7 +376,9 @@
         </button>
       </div>
 
-      <button type="button" class="btn btn-success">Submeter</button>
+      <button type="button" class="btn btn-success" (click)="submit()">
+        Submeter
+      </button>
     </div>
   </div>
 </div>
