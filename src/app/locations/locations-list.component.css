@@ -29,7 +29,8 @@
   font-size: larger;
 }
 
-.fa-times {
+.fa-times,
+.fa-check {
   float: right;
   cursor: pointer;
 }
@@ -97,4 +98,9 @@
 #minus-button {
   background-color: #b32b2b;
   margin: 84px 0 0 -24px;
+}
+
+.close-day,
+.open-day {
+  margin-top: 8px;
 }

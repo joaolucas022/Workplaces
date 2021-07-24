@@ -17,9 +17,6 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   sub!: Subscription;
   infoClicked: boolean = false;
   clickedIndex!: number;
-  suggestClicked: boolean = false;
-  lunchChecked: boolean = false;
-  noteCount: number = 1;
 
   // dependency injection
   constructor(private locationService: LocationService) {}
@@ -54,13 +51,26 @@ export class LocationsListComponent implements OnInit, OnDestroy {
     this.infoClicked = false;
   }
 
+  // Suggestion form
+  suggestClicked: boolean = true;
+  lunchChecked: boolean = false;
+  noteCount: number = 1;
+
+  mondayOpen: boolean = true;
+  tuesdayOpen: boolean = true;
+  wednesdayOpen: boolean = true;
+  thursdayOpen: boolean = true;
+  fridayOpen: boolean = true;
+  saturdayOpen: boolean = true;
+  sundayOpen: boolean = true;
+
   // opens the suggestion tab
   suggestOpen(): void {
     this.suggestClicked = true;
   }
 
-  // closes the suggestion tab
-  suggestClose(): void {
+  // resets suggestion form variables to original values
+  resetSuggestionForm(): void {
     const plus = <HTMLInputElement>document.getElementById('plus-button');
     const minus = <HTMLInputElement>document.getElementById('minus-button');
 
@@ -69,8 +79,57 @@ export class LocationsListComponent implements OnInit, OnDestroy {
       minus.style.margin = '84px 0 0 -24px';
       this.noteCount = 1;
     }
+    this.mondayOpen = true;
+    this.tuesdayOpen = true;
+    this.wednesdayOpen = true;
+    this.thursdayOpen = true;
+    this.fridayOpen = true;
+    this.saturdayOpen = true;
+    this.sundayOpen = true;
     this.lunchChecked = false;
+  }
+
+  // closes the suggestion tab
+  suggestClose(): void {
+    this.resetSuggestionForm();
     this.suggestClicked = false;
+  }
+
+  // closes a single day in schedule
+  closeDay(day: string): void {
+    if (day === 'monday') {
+      this.mondayOpen = false;
+    } else if (day === 'tuesday') {
+      this.tuesdayOpen = false;
+    } else if (day === 'wednesday') {
+      this.wednesdayOpen = false;
+    } else if (day === 'thursday') {
+      this.thursdayOpen = false;
+    } else if (day === 'friday') {
+      this.fridayOpen = false;
+    } else if (day === 'saturday') {
+      this.saturdayOpen = false;
+    } else if (day === 'sunday') {
+      this.sundayOpen = false;
+    }
+  }
+
+  openDay(day: string): void {
+    if (day === 'monday') {
+      this.mondayOpen = true;
+    } else if (day === 'tuesday') {
+      this.tuesdayOpen = true;
+    } else if (day === 'wednesday') {
+      this.wednesdayOpen = true;
+    } else if (day === 'thursday') {
+      this.thursdayOpen = true;
+    } else if (day === 'friday') {
+      this.fridayOpen = true;
+    } else if (day === 'saturday') {
+      this.saturdayOpen = true;
+    } else if (day === 'sunday') {
+      this.sundayOpen = true;
+    }
   }
 
   // opens or closes extra schedule slot
@@ -138,9 +197,6 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   }
 
   submit(): void {
-    const plus = <HTMLInputElement>document.getElementById('plus-button');
-    const minus = <HTMLInputElement>document.getElementById('minus-button');
-
     const nameInput = <HTMLInputElement>document.getElementById('name-input');
     const dispInput = <HTMLInputElement>document.getElementById('disp-input');
     const callsInput = <HTMLInputElement>document.getElementById('calls-input');
@@ -182,13 +238,41 @@ export class LocationsListComponent implements OnInit, OnDestroy {
       this.lunchChecked == false
     ) {
       newSchedule = {
-        mon: [scOpen1[0].value + ' --> ' + scClose1[0].value],
-        tue: [scOpen1[1].value + ' --> ' + scClose1[1].value],
-        wed: [scOpen1[2].value + ' --> ' + scClose1[2].value],
-        thu: [scOpen1[3].value + ' --> ' + scClose1[3].value],
-        fri: [scOpen1[4].value + ' --> ' + scClose1[4].value],
-        sat: [scOpen1[5].value + ' --> ' + scClose1[5].value],
-        sun: [scOpen1[6].value + ' --> ' + scClose1[6].value],
+        mon: [
+          scOpen1[0].value === 'Encerrado'
+            ? 'Encerrado'
+            : scOpen1[0].value + ' --> ' + scClose1[0].value,
+        ],
+        tue: [
+          scOpen1[1].value === 'Encerrado'
+            ? 'Encerrado'
+            : scOpen1[1].value + ' --> ' + scClose1[1].value,
+        ],
+        wed: [
+          scOpen1[2].value === 'Encerrado'
+            ? 'Encerrado'
+            : scOpen1[2].value + ' --> ' + scClose1[2].value,
+        ],
+        thu: [
+          scOpen1[3].value === 'Encerrado'
+            ? 'Encerrado'
+            : scOpen1[3].value + ' --> ' + scClose1[3].value,
+        ],
+        fri: [
+          scOpen1[4].value === 'Encerrado'
+            ? 'Encerrado'
+            : scOpen1[4].value + ' --> ' + scClose1[4].value,
+        ],
+        sat: [
+          scOpen1[5].value === 'Encerrado'
+            ? 'Encerrado'
+            : scOpen1[5].value + ' --> ' + scClose1[5].value,
+        ],
+        sun: [
+          scOpen1[6].value === 'Encerrado'
+            ? 'Encerrado'
+            : scOpen1[6].value + ' --> ' + scClose1[6].value,
+        ],
       };
     } else if (
       scOpen1[0].value !== '' &&
@@ -203,32 +287,46 @@ export class LocationsListComponent implements OnInit, OnDestroy {
       );
       newSchedule = {
         mon: [
-          scOpen1[0].value + ' --> ' + scClose1[0].value,
-          scOpen2[0].value + ' --> ' + scClose2[0].value,
+          scOpen1[0].value === 'Encerrado'
+            ? 'Encerrado'
+            : (scOpen1[0].value + ' --> ' + scClose1[0].value,
+              scOpen2[0].value + ' --> ' + scClose2[0].value),
         ],
         tue: [
-          scOpen1[1].value + ' --> ' + scClose1[1].value,
-          scOpen2[1].value + ' --> ' + scClose2[1].value,
+          scOpen1[1].value === 'Encerrado'
+            ? 'Encerrado'
+            : (scOpen1[1].value + ' --> ' + scClose1[1].value,
+              scOpen2[1].value + ' --> ' + scClose2[1].value),
         ],
         wed: [
-          scOpen1[2].value + ' --> ' + scClose1[2].value,
-          scOpen2[2].value + ' --> ' + scClose2[2].value,
+          scOpen1[2].value === 'Encerrado'
+            ? 'Encerrado'
+            : (scOpen1[2].value + ' --> ' + scClose1[2].value,
+              scOpen2[2].value + ' --> ' + scClose2[2].value),
         ],
         thu: [
-          scOpen1[3].value + ' --> ' + scClose1[3].value,
-          scOpen2[3].value + ' --> ' + scClose2[3].value,
+          scOpen1[3].value === 'Encerrado'
+            ? 'Encerrado'
+            : (scOpen1[3].value + ' --> ' + scClose1[3].value,
+              scOpen2[3].value + ' --> ' + scClose2[3].value),
         ],
         fri: [
-          scOpen1[4].value + ' --> ' + scClose1[4].value,
-          scOpen2[4].value + ' --> ' + scClose2[4].value,
+          scOpen1[4].value === 'Encerrado'
+            ? 'Encerrado'
+            : (scOpen1[4].value + ' --> ' + scClose1[4].value,
+              scOpen2[4].value + ' --> ' + scClose2[4].value),
         ],
         sat: [
-          scOpen1[5].value + ' --> ' + scClose1[5].value,
-          scOpen2[5].value + ' --> ' + scClose2[5].value,
+          scOpen1[5].value === 'Encerrado'
+            ? 'Encerrado'
+            : (scOpen1[5].value + ' --> ' + scClose1[5].value,
+              scOpen2[5].value + ' --> ' + scClose2[5].value),
         ],
         sun: [
-          scOpen1[6].value + ' --> ' + scClose1[6].value,
-          scOpen2[6].value + ' --> ' + scClose2[6].value,
+          scOpen1[6].value === 'Encerrado'
+            ? 'Encerrado'
+            : (scOpen1[6].value + ' --> ' + scClose1[6].value,
+              scOpen2[6].value + ' --> ' + scClose2[6].value),
         ],
       };
     } else {
@@ -246,16 +344,10 @@ export class LocationsListComponent implements OnInit, OnDestroy {
       notes: newNotes,
     };
 
-    this.locationService
-      .addLocation(newLocation)
-      .subscribe((location) => this.locations.push(location));
+    // this.locationService
+    //   .addLocation(newLocation)
+    //   .subscribe((location) => this.locations.push(location));
 
-    if (minus) {
-      plus.style.margin = '80px 0 0 0';
-      minus.style.margin = '84px 0 0 -24px';
-      this.noteCount = 1;
-    }
-    this.lunchChecked = false;
-    this.suggestClicked = false;
+    this.suggestClose();
   }
 }

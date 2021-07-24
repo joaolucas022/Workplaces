@@ -169,7 +169,17 @@
             <label for="sc-mon-input" class="form-label">
               <small>Segunda</small>
             </label>
-            <div class="input-group">
+            <i
+              class="fa fa-times text-danger close-day"
+              (click)="closeDay('monday')"
+              *ngIf="mondayOpen"
+            ></i>
+            <i
+              class="fa fa-check text-success open-day"
+              (click)="openDay('monday')"
+              *ngIf="!mondayOpen"
+            ></i>
+            <div class="input-group" *ngIf="mondayOpen">
               <input
                 type="text"
                 id="sc-mon-input"
@@ -183,7 +193,18 @@
                 placeholder="Encerra"
               />
             </div>
-            <div class="input-group mt-1" *ngIf="lunchChecked">
+            <input
+              *ngIf="!mondayOpen"
+              type="text"
+              class="
+                form-control
+                sc-input-open sc-input-close sc-input-open2 sc-input-close2
+              "
+              placeholder="Encerrado"
+              value="Encerrado"
+              disabled
+            />
+            <div class="input-group mt-1" *ngIf="lunchChecked && mondayOpen">
               <input
                 type="text"
                 id="sc-mon-input2"
@@ -203,7 +224,17 @@
             <label for="sc-tue-input" class="form-label">
               <small>Terça</small>
             </label>
-            <div class="input-group">
+            <i
+              class="fa fa-times text-danger close-day"
+              (click)="closeDay('tuesday')"
+              *ngIf="tuesdayOpen"
+            ></i>
+            <i
+              class="fa fa-check text-success open-day"
+              (click)="openDay('tuesday')"
+              *ngIf="!tuesdayOpen"
+            ></i>
+            <div class="input-group" *ngIf="tuesdayOpen">
               <input
                 type="text"
                 id="sc-tue-input"
@@ -217,7 +248,18 @@
                 placeholder="Encerra"
               />
             </div>
-            <div class="input-group mt-1" *ngIf="lunchChecked">
+            <input
+              *ngIf="!tuesdayOpen"
+              type="text"
+              class="
+                form-control
+                sc-input-open sc-input-close sc-input-open2 sc-input-close2
+              "
+              placeholder="Encerrado"
+              value="Encerrado"
+              disabled
+            />
+            <div class="input-group mt-1" *ngIf="lunchChecked && tuesdayOpen">
               <input
                 type="text"
                 id="sc-tue-input2"
