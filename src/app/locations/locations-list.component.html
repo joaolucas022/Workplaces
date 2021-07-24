@@ -100,15 +100,15 @@
         </tbody>
       </table>
 
-      <p>
+      <p *ngIf="locations[clickedIndex].site !== ''">
         <b>Site: </b>
         <a [href]="locations[clickedIndex].site" target="_blank">
           {{ locations[clickedIndex].site }}
         </a>
       </p>
-      <p>
-        <b>Contactos: </b
-        >{{ locations[clickedIndex].contacts | phoneNumberPipe }}
+      <p *ngIf="locations[clickedIndex].contacts > 0">
+        <b>Contactos: </b>
+        {{ locations[clickedIndex].contacts | phoneNumberPipe }}
       </p>
       <p><b>Morada: </b>{{ locations[clickedIndex].address }}</p>
       <p *ngIf="locations[clickedIndex].notes.length"><b>Notas: </b></p>

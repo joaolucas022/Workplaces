@@ -52,7 +52,7 @@ export class LocationsListComponent implements OnInit, OnDestroy {
   }
 
   // Suggestion form
-  suggestClicked: boolean = true;
+  suggestClicked: boolean = false;
   lunchChecked: boolean = false;
   noteCount: number = 1;
 
@@ -221,7 +221,9 @@ export class LocationsListComponent implements OnInit, OnDestroy {
 
     let newNotes = [];
     for (let i = 0; i < notesInputs.length; i++) {
-      newNotes.push(notesInputs[i].value);
+      if (notesInputs[i].value !== '') {
+        newNotes.push(notesInputs[i].value);
+      }
     }
 
     const scOpen1 = <HTMLCollectionOf<HTMLInputElement>>(
@@ -232,104 +234,74 @@ export class LocationsListComponent implements OnInit, OnDestroy {
     );
     let newSchedule;
 
-    if (
-      scOpen1[0].value !== '' &&
-      scClose1[0].value !== '' &&
-      this.lunchChecked == false
-    ) {
+    const scNull = (
+      arr1: HTMLCollectionOf<HTMLInputElement>,
+      arr2: HTMLCollectionOf<HTMLInputElement>
+    ) => {
+      let schedule = true;
+      for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i].value === '' && arr2[i].value === '') {
+          schedule = false;
+          break;
+        } else {
+          continue;
+        }
+      }
+      return schedule;
+    };
+
+    const scProcess = (n: number): string[] => {
+      let scArray = [];
+      const open1 = scOpen1[n].value;
+      const close1 = scClose1[n].value;
+
+      if (open1 === 'Encerrado' && close1 === 'Encerrado') {
+        // is closed this day
+
+        scArray.push('Encerrado');
+        return scArray;
+      } else if (open1 !== '' && close1 !== '' && this.lunchChecked == false) {
+        // is open and has no lunch break
+
+        scArray.push(open1 + ' --> ' + close1);
+        return scArray;
+      } else if (open1 !== '' && close1 !== '' && this.lunchChecked == true) {
+        // is open and has lunch break
+
+        const scOpen2 = <HTMLCollectionOf<HTMLInputElement>>(
+          document.getElementsByClassName('sc-input-open2')
+        );
+        const scClose2 = <HTMLCollectionOf<HTMLInputElement>>(
+          document.getElementsByClassName('sc-input-close2')
+        );
+        const open2 = scOpen2[n].value;
+        const close2 = scClose2[n].value;
+
+        if (open2 !== '' && close2 !== '') {
+          scArray.push(open1 + ' --> ' + close1);
+          scArray.push(open2 + ' --> ' + close2);
+        } else {
+          scArray.push(open1 + ' --> ' + close1);
+        }
+
+        return scArray;
+      } else {
+        scArray.push('?');
+        return scArray;
+      }
+    };
+
+    if (scNull(scOpen1, scClose1) == true) {
       newSchedule = {
-        mon: [
-          scOpen1[0].value === 'Encerrado'
-            ? 'Encerrado'
-            : scOpen1[0].value + ' --> ' + scClose1[0].value,
-        ],
-        tue: [
-          scOpen1[1].value === 'Encerrado'
-            ? 'Encerrado'
-            : scOpen1[1].value + ' --> ' + scClose1[1].value,
-        ],
-        wed: [
-          scOpen1[2].value === 'Encerrado'
-            ? 'Encerrado'
-            : scOpen1[2].value + ' --> ' + scClose1[2].value,
-        ],
-        thu: [
-          scOpen1[3].value === 'Encerrado'
-            ? 'Encerrado'
-            : scOpen1[3].value + ' --> ' + scClose1[3].value,
-        ],
-        fri: [
-          scOpen1[4].value === 'Encerrado'
-            ? 'Encerrado'
-            : scOpen1[4].value + ' --> ' + scClose1[4].value,
-        ],
-        sat: [
-          scOpen1[5].value === 'Encerrado'
-            ? 'Encerrado'
-            : scOpen1[5].value + ' --> ' + scClose1[5].value,
-        ],
-        sun: [
-          scOpen1[6].value === 'Encerrado'
-            ? 'Encerrado'
-            : scOpen1[6].value + ' --> ' + scClose1[6].value,
-        ],
+        mon: scProcess(0),
+        tue: scProcess(1),
+        wed: scProcess(2),
+        thu: scProcess(3),
+        fri: scProcess(4),
+        sat: scProcess(5),
+        sun: scProcess(6),
       };
-    } else if (
-      scOpen1[0].value !== '' &&
-      scClose1[0].value !== '' &&
-      this.lunchChecked == true
-    ) {
-      const scOpen2 = <HTMLCollectionOf<HTMLInputElement>>(
-        document.getElementsByClassName('sc-input-open2')
-      );
-      const scClose2 = <HTMLCollectionOf<HTMLInputElement>>(
-        document.getElementsByClassName('sc-input-close2')
-      );
-      newSchedule = {
-        mon: [
-          scOpen1[0].value === 'Encerrado'
-            ? 'Encerrado'
-            : (scOpen1[0].value + ' --> ' + scClose1[0].value,
-              scOpen2[0].value + ' --> ' + scClose2[0].value),
-        ],
-        tue: [
-          scOpen1[1].value === 'Encerrado'
-            ? 'Encerrado'
-            : (scOpen1[1].value + ' --> ' + scClose1[1].value,
-              scOpen2[1].value + ' --> ' + scClose2[1].value),
-        ],
-        wed: [
-          scOpen1[2].value === 'Encerrado'
-            ? 'Encerrado'
-            : (scOpen1[2].value + ' --> ' + scClose1[2].value,
-              scOpen2[2].value + ' --> ' + scClose2[2].value),
-        ],
-        thu: [
-          scOpen1[3].value === 'Encerrado'
-            ? 'Encerrado'
-            : (scOpen1[3].value + ' --> ' + scClose1[3].value,
-              scOpen2[3].value + ' --> ' + scClose2[3].value),
-        ],
-        fri: [
-          scOpen1[4].value === 'Encerrado'
-            ? 'Encerrado'
-            : (scOpen1[4].value + ' --> ' + scClose1[4].value,
-              scOpen2[4].value + ' --> ' + scClose2[4].value),
-        ],
-        sat: [
-          scOpen1[5].value === 'Encerrado'
-            ? 'Encerrado'
-            : (scOpen1[5].value + ' --> ' + scClose1[5].value,
-              scOpen2[5].value + ' --> ' + scClose2[5].value),
-        ],
-        sun: [
-          scOpen1[6].value === 'Encerrado'
-            ? 'Encerrado'
-            : (scOpen1[6].value + ' --> ' + scClose1[6].value,
-              scOpen2[6].value + ' --> ' + scClose2[6].value),
-        ],
-      };
-    } else {
+    } else if (scNull(scOpen1, scClose1) == false) {
       newSchedule = null;
     }
 
@@ -344,9 +316,9 @@ export class LocationsListComponent implements OnInit, OnDestroy {
       notes: newNotes,
     };
 
-    // this.locationService
-    //   .addLocation(newLocation)
-    //   .subscribe((location) => this.locations.push(location));
+    this.locationService
+      .addLocation(newLocation)
+      .subscribe((location) => this.locations.push(location));
 
     this.suggestClose();
   }
