@@ -10,7 +10,7 @@ import { ILocation } from './location';
 })
 export class LocationService {
   // hardcode: api/data.json
-  private locationUrl = 'http://127.0.0.1:8000/api/locations';
+  private locationUrl = 'https://work-places.herokuapp.com/api/locations';
 
   // dependency injection
   constructor(private http: HttpClient) {}
