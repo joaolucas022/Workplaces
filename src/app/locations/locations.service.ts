@@ -10,7 +10,7 @@ import { ILocation } from './location';
 })
 export class LocationService {
   // hardcode: api/data.json
-  private locationUrl = 'https://work-places.herokuapp.com/api/locations';
+  private locationUrl = 'http://desaad.pythonanywhere.com/api/locations';
 
   // dependency injection
   constructor(private http: HttpClient) {}
